@@ -53,6 +53,7 @@ define apache::vhost(
     $override           = $apache::params::override,
     $apache_name        = $apache::params::apache_name,
     $vhost_name         = $apache::params::vhost_name,
+    $rackbaseuri        = $apache::params::rackbaseuri,
     $logroot            = "/var/log/$apache::params::apache_name",
     $ensure             = 'present'
   ) {
@@ -97,6 +98,24 @@ define apache::vhost(
     }
   }
 
+
+  # Is apache::mod::passenger enabled (or apache::mod['passenger'])
+  $passenger_enabled = defined(Apache::Mod['passenger'])
+
+  # Template uses:
+  # - $vhost_name
+  # - $port
+  # - $srvname
+  # - $serveradmin
+  # - $serveraliases
+  # - $docroot
+  # - $options
+  # - $override
+  # - $logroot
+  # - $access_log
+  # - $name
+  # - $passenger_enabled
+  # - $rackbaseuri
   file { "${priority}-${name}.conf":
     ensure  => $ensure,
     path    => "${apache::params::vdir}/${priority}-${name}.conf",
