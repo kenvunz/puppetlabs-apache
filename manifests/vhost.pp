@@ -57,7 +57,8 @@ define apache::vhost(
     $rackbaseuri        = $apache::params::rackbaseuri,
     $logroot            = "/var/log/$apache::params::apache_name",
     $access_log         = true,
-    $ensure             = 'present'
+    $ensure             = 'present',
+    $requestheader      = false
   ) {
 
   validate_re($ensure, '^(present|absent)$',
@@ -117,6 +118,7 @@ define apache::vhost(
   # - $name
   # - $passenger_enabled
   # - $rackbaseuri
+  # - $requestheader
   file { "${priority}-${name}.conf":
     ensure  => $ensure,
     path    => "${apache::params::vdir}/${priority}-${name}.conf",
