@@ -1,11 +1,11 @@
 class apache::mod::passenger (
-	$passengerhighperformance 	= off,
-	$passengermaxpoolsize				= 6,
-	$passengerpoolidletime			= 300,
-	$passengermaxrequests				= 0,
-	$passengerstatthrottlerate	= 0,
-	$rackautodetect							= on,
-	$railsautodetect						= on
+  $passengerhighperformance   = off,
+  $passengermaxpoolsize       = 6,
+  $passengerpoolidletime      = 300,
+  $passengermaxrequests       = 0,
+  $passengerstatthrottlerate  = 0,
+  $rackautodetect             = on,
+  $railsautodetect            = on
 ) {
   include 'apache'
 
@@ -18,9 +18,9 @@ class apache::mod::passenger (
   # settings. This may not be suitable for production systems.
 
   file{"${apache::params::mod_dir}/passenger.conf":
-  	ensure 	=> file,
-  	content	=> template('apache/mod/passenger.conf.erb'),
-  	notify 	=> Service['httpd'],
-  	require	=> Apache::Mod['passenger'],
-	}
+    ensure  => file,
+    content => template('apache/mod/passenger.conf.erb'),
+    notify  => Service['httpd'],
+    require => Apache::Mod['passenger'],
+  }
 }

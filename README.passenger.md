@@ -9,9 +9,9 @@ To this end the Apache passenger module has been modified to apply system wude P
 The following declatations are supported and can be passed to mod_passenger as parameters, for example:
 
 ````
-class {'apache::mod::passenger': 
-	passengerhighperformance 	=> 'on',
-	railsautodetect 					=> 'off',
+class {'apache::mod::passenger':
+  passengerhighperformance  => 'on',
+  railsautodetect           => 'off',
 }
 ```
 
