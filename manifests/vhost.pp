@@ -91,6 +91,7 @@ define apache::vhost(
     $redirect_dest      = undef,
     $redirect_status    = undef,
     $rack_base_uris     = undef,
+    $request_header     = undef,
     $rewrite_rule       = undef,
     $rewrite_base       = undef,
     $rewrite_cond       = undef,
