@@ -1,5 +1,27 @@
-PassengerRoot <%= @passenger_root %>
-PassengerRuby <%= @passenger_ruby %>
-<% if @passenger_max_pool_size -%>
-PassengerMaxPoolSize <%= @passenger_max_pool_size %>
-<% end -%>
+# The Passanger Apache module configuration file is being
+# managed by Puppet and changes will be overwritten.
+<IfModule mod_passenger.c>
+  PassengerRoot <%= @passenger_root %>
+  PassengerRuby <%= @passenger_ruby %>
+  <%- if passengerhighperformance.downcase != 'off' -%>
+  PassengerHighPerformance <%= passengerhighperformance %>
+  <%- end -%>
+  <%- if passengermaxpoolsize != 6 -%>
+  PassengerMaxPoolSize <%= passengermaxpoolsize %>
+  <%- end -%>
+  <%- if passengerpoolidletime != 300 -%>
+  PassengerPoolIdleTime <%= passengerpoolidletime %>
+  <%- end -%>
+  <%- if passengermaxrequests != 0 -%>
+  PassengerMaxRequests <%= passengermaxrequests %>
+  <%- end -%>
+  <%- if passengerstatthrottlerate != 0 -%>
+  PassengerStatThrottleRate <%= passengerstatthrottlerate %>
+  <%- end -%>
+  <%- if rackautodetect.downcase != 'on' -%>
+  RackAutoDetect <%= rackautodetect %>
+  <%- end -%>
+  <%- if railsautodetect.downcase != 'on' -%>
+  RailsAutoDetect <%= railsautodetect %>
+  <%- end -%>
+</IfModule>
