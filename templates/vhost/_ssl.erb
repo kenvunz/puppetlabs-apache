@@ -17,7 +17,19 @@
 <% if @ssl_crl -%>
   SSLCARevocationFile     <%= @ssl_crl %>
 <% end -%>
+<% if @ssl_protocol != 'all' -%>
+  SSLProtocol <%= @ssl_protocol %>
+<% end -%>
+<% if @ssl_cipher_suite != 'ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP' -%>
+  SSLCipherSuite <%= @ssl_cipher_suite %>
+<% end -%>
+<% if @ssl_verify_client != 'none' -%>
+  SSLVerifyClient <%= @ssl_verify_client %>
+<% end -%>
+<% if @ssl_verify_depth != 1 -%>
+  SSLVerifyDepth <%= ssl_verify_depth %>
+<% end -%>
   <FilesMatch "\.(cgi|shtml|phtml|php)$">
-    SSLOptions +StdEnvVars
+    SSLOptions <%= @ssl_options %>
   </FilesMatch>
 <% end -%>
