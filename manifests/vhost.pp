@@ -64,6 +64,7 @@ define apache::vhost(
     $ssl_key            = $apache::default_ssl_key,
     $ssl_chain          = $apache::default_ssl_chain,
     $ssl_ca             = $apache::default_ssl_ca,
+    $ssl_ca_dir         = $apache::params::ssl_certs_dir,
     $ssl_crl_path       = $apache::default_ssl_crl_path,
     $ssl_crl            = $apache::default_ssl_crl,
     $ssl_certs_dir      = $apache::params::ssl_certs_dir,
