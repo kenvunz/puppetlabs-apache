@@ -20,6 +20,5 @@ class apache::mod::passenger (
     path    => "${apache::params::mod_dir}/passenger.conf",
     content => template('apache/mod/passenger.conf.erb'),
     notify  => Service['httpd'],
-    require => Apache::Mod['passenger'],
   }
 }
