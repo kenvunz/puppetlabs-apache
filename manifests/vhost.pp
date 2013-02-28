@@ -72,7 +72,7 @@ define apache::vhost(
     $ssl_protocol       = 'all',
     $ssl_cipher_suite   = 'ALL:!ADH:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP',
     $ssl_verify_client  = 'none',
-    $ssl_options        = '+StdEnvVars',
+    $ssl_options        = undef,
     $ssl_verify_depth   = 1,
     $priority           = undef,
     $default_vhost      = false,

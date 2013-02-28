@@ -29,7 +29,8 @@
 <% if @ssl_verify_depth != 1 -%>
   SSLVerifyDepth <%= ssl_verify_depth %>
 <% end -%>
-  <FilesMatch "\.(cgi|shtml|phtml|php)$">
-    SSLOptions <%= @ssl_options %>
-  </FilesMatch>
+<% if $ssl_options -%>
+  SSLOptions <%= @ssl_options %>
+<% end -%>
+
 <% end -%>
