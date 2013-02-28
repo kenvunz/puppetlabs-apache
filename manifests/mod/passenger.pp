@@ -14,12 +14,10 @@ class apache::mod::passenger (
 
   # you could just do this, but no options would be configured!
   apache::mod { 'passenger': }
-
-  # The default passenger.conf file will run Passenger with the default
-  # settings. This may not be suitable for production systems.
-
-  file{"${apache::params::mod_dir}/passenger.conf":
-    ensure  => file,
+  # Template uses: $passenger_root, $passenger_ruby, $passenger_max_pool_size
+  file { 'passenger.conf':
+    ensure  => present,
+    path    => "${apache::params::mod_dir}/passenger.conf",
     content => template('apache/mod/passenger.conf.erb'),
     notify  => Service['httpd'],
     require => Apache::Mod['passenger'],
