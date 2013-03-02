@@ -29,7 +29,7 @@
 <% if @ssl_verify_depth != 1 -%>
   SSLVerifyDepth <%= ssl_verify_depth %>
 <% end -%>
-<% if $ssl_options -%>
+<% if @ssl_options -%>
   SSLOptions <%= @ssl_options %>
 <% end -%>
 
