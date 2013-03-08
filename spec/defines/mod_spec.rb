@@ -53,11 +53,12 @@ describe 'apache::mod', :type => :define do
           :path    => '/etc/apache2/mods-available/spec_m.load',
           :content => "LoadModule spec_m_module /usr/lib/apache2/modules/mod_spec_m.so\n"
         } )
-      it "should link the module load file" do
+      end
+      it "should manage the module load file" do
         should contain_file('enable.spec_m.load').with({
-          :path   => '/etc/apache2/mods-enabled/spec_m.load',
+          :path    => '/etc/apache2/mods-enabled/spec_m.load',
           :content => "LoadModule spec_m_module /usr/lib/apache2/modules/mod_spec_m.so\n"
-          })
+        } )
       end
     end
   end
