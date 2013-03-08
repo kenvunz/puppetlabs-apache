@@ -2,20 +2,20 @@
 
 Just enabling the Passenger module is insufficient for the use of Passenger in production. Passenger should be tunable to better fit the environment in which it is run while being aware of the resources it required.
 
-To this end the Apache passenger module has been modified to apply system wude Passenger tuning declarations to `passenger.conf`. Declrations specific to a virtual host should be passed through when defining a vhost.
+To this end the Apache passenger module has been modified to apply system wide Passenger tuning declarations to `passenger.conf`. Declarations specific to a virtual host should be passed through when defining a `vhost`.
 
 # Supported Declarations
 
-The following declatations are supported and can be passed to mod_passenger as parameters, for example:
+The following declarations are supported and can be passed to `apache::mod::passenger` as parameters, for example:
 
-````
+```
 class {'apache::mod::passenger':
   passengerhighperformance  => 'on',
   railsautodetect           => 'off',
 }
 ```
 
-The general form is using the all lowercase version of the declaration.
+The general form is using the all lower case version of the declaration.
 
 If you pass a default value to `apache::mod::passenger` it will be ignored and not passed through to the configuration file.
 
@@ -27,25 +27,25 @@ http://www.modrails.com/documentation/Users%20guide%20Apache.html#PassengerHighP
 
 ## PassengerMaxPoolSize
 
-Set's the maximum number of Passenger application processes that may simultaneouly run. The default value is 6.
+Set's the maximum number of Passenger application processes that may simultaneously run. The default value is 6.
 
 http://www.modrails.com/documentation/Users%20guide%20Apache.html#_passengermaxpoolsize_lt_integer_gt
 
 ## PassengerPoolIdleTime
 
-The maximum number of seconds a Passenger Application process will be allowed to remain idle before being shutdown. The default value is 300.
+The maximum number of seconds a Passenger Application process will be allowed to remain idle before being shut down. The default value is 300.
 
 http://www.modrails.com/documentation/Users%20guide%20Apache.html#PassengerPoolIdleTime
 
 ## PassengerMaxRequests
 
-The maximum number of request a Passenger application will process before being restarted. The default value is 0, which indicates that a process will only shutdown if the Pool Idle Time (see above) expires.
+The maximum number of request a Passenger application will process before being restarted. The default value is 0, which indicates that a process will only shut down if the Pool Idle Time (see above) expires.
 
 http://www.modrails.com/documentation/Users%20guide%20Apache.html#PassengerMaxRequests
 
-# PassengerStatThrottleRate
+## PassengerStatThrottleRate
 
-Sets how often Passenger performs filesystem checks, at most once every _x_ seconds. Default is 0, which means the checks are performed with every request.
+Sets how often Passenger performs file system checks, at most once every _x_ seconds. Default is 0, which means the checks are performed with every request.
 
 http://www.modrails.com/documentation/Users%20guide%20Apache.html#_passengerstatthrottlerate_lt_integer_gt
 
