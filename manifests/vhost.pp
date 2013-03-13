@@ -69,6 +69,7 @@ define apache::vhost(
     $ssl_private_key      = false,
     $ssl_ca_chain_cert    = false,
     $ssl_ca_cert          = false,
+    $passenger_enabled    = false,    
     $sslprotocol          = $apache::params::sslprotocol,
     $ssloptions           = $apache::params::ssloptions,
     $sslciphersuite       = $apache::params::sslciphersuite,
